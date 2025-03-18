@@ -1,6 +1,5 @@
 console.log(123);
 
-/*
 window.onload = () => {
   const chatContent = document.querySelector('.chat-content')
   const userMessageIpt = document.querySelector('#user-message-ipt')
@@ -20,4 +19,3 @@ window.onload = () => {
     chatContent.append(robotMessagePre)
   }
 }
-*/
