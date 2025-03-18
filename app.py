@@ -9,11 +9,10 @@ def home():
 
 
 """
-@app.route('/api/v1/chat/send', methods=['POST'])
-def api_v1_chat_send():
-    user_message = request.json.get('user_message', '').strip()  
-    if not user_message:
-        abort(400)
+@app.route('/api/chat', methods=['POST'])
+def api_chat():
+    user_message = request.json.get('user_message')
+    return {"robot_message": "I received your message. " + user_message}
       
     # url = "https://api.deepseek.com/chat/completions"
     # payload = json.dumps({
@@ -33,8 +32,6 @@ def api_v1_chat_send():
     # deepseek_response = requests.request("POST", url, headers=headers, data=payload)
     # robot_message = deepseek_response.json()['choices'][0]['message']['content']
     # return {"robot_message": robot_message}
-
-    return {"robot_message": "I'm a chatbot!"}
 """
 
 
