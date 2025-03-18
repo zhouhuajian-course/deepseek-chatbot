@@ -17,5 +17,26 @@ window.onload = () => {
     robotMessagePre.className = 'robot-message'
     robotMessagePre.textContent = "I'm a robot!"
     chatContent.append(robotMessagePre)
+
+    /*
+    POST http://127.0.0.1/api/v1/chat/send 
+    
+    {"user_message":"hi"}
+
+    {"robot_message": "Hello! How can I assist you today? 😊"}
+    */
+    // fetch('/api/v1/chat/send', {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify({ "user_message": userMessage })
+    // })
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     const robotMessagePre = document.createElement('pre')
+    //     robotMessagePre.className = 'robot-message'
+    //     robotMessagePre.textContent = data['robot_message']
+    //     chatContent.append(robotMessagePre)
+    //   })
+
   }
 }
