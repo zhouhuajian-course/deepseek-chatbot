@@ -13,25 +13,6 @@ def home():
 def api_chat():
     user_message = request.json.get('user_message')
     return {"robot_message": "I received your message. " + user_message}
-      
-    # url = "https://api.deepseek.com/chat/completions"
-    # payload = json.dumps({
-    #   "messages": [
-    #     {
-    #       "content": user_message,
-    #       "role": "user"
-    #     }
-    #   ],
-    #   "model": "deepseek-chat",
-    # })
-    # headers = {
-    #   'Content-Type': 'application/json',
-    #   'Accept': 'application/json',
-    #   'Authorization': 'Bearer sk-05c6f9a1625543299f1dd5850b2f6d7c'
-    # }
-    # deepseek_response = requests.request("POST", url, headers=headers, data=payload)
-    # robot_message = deepseek_response.json()['choices'][0]['message']['content']
-    # return {"robot_message": robot_message}
 """
 
 
