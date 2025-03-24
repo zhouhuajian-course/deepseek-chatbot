@@ -43,7 +43,7 @@ def api_chat():
     return {"robot_message": robot_message}
 
 
-
+"""
 @app.route('/api/v2/chat')
 def api_v2_chat():
     return "Hi, I am a robot!"
@@ -51,6 +51,7 @@ def api_v2_chat():
     #     for str in ["Hi, ", "I am a ", "robot!"]: 
     #         yield str
     # return Response(robot_message())
+"""
 
 
 if __name__ == '__main__':
