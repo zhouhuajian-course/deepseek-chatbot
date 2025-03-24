@@ -7,6 +7,10 @@ window.onload = () => {
 
   sendBtn.onclick = () => {
     const userMessage = userMessageIpt.value
+
+    // userMessageIpt.value = ''
+    // sendBtn.disabled = true
+
     // <div class="user-message">introduce yourself</div>
     const userMessageDiv = document.createElement('div')
     userMessageDiv.className = 'user-message'
@@ -36,10 +40,19 @@ window.onload = () => {
         chatContent.append(robotMessagePre)
       })
 
-
+    // const robotMessagePre = document.createElement('pre')
+    // robotMessagePre.className = 'robot-message'
+    // robotMessagePre.textContent = "I'm a robot!"
+    // chatContent.append(robotMessagePre)
     // const eventSource = new EventSource('/api/v2/chat')
     // eventSource.onmessage = (event) => {
     //   console.log(event.data);
+    //   // if (event.data == '[DONE]') {
+    //   //   eventSource.close()
+    //   //   sendBtn.disabled = false
+    //   // } else {
+    //   //   robotMessagePre.textContent += JSON.parse(event.data)['chunk']
+    //   // }
     // }
   }
 }

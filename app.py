@@ -43,15 +43,20 @@ def api_chat():
     return {"robot_message": robot_message}
 
 
-"""
-@app.route('/api/v2/chat')
-def api_v2_chat():
-    return "Hi, I am a robot!"
-    # def robot_message():
-    #     for str in ["Hi, ", "I am a ", "robot!"]: 
-    #         yield str
-    # return Response(robot_message())
-"""
+
+# @app.route('/api/v2/chat')
+# def api_v2_chat():
+#     # import time
+#     def robot_message():
+#         for chunk in ["我", "是", "一个", "机器人"]: 
+#             yield chunk
+#             # yield "data: " + chunk + "\n\n"
+#             # yield "data: " + json.dumps({'chunk': chunk}) + "\n\n"
+#             # time.sleep(1)
+#         # yield "data: [DONE]\n\n"
+    
+#     return Response(robot_message(), content_type="text/event-stream")
+
 
 
 if __name__ == '__main__':
