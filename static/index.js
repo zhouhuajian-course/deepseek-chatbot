@@ -35,5 +35,11 @@ window.onload = () => {
         robotMessagePre.textContent = data['robot_message']
         chatContent.append(robotMessagePre)
       })
+
+    // const eventSource = new EventSource('/api/v2/chat')
+    // eventSource.onmessage = (event) => {
+    //   console.log(event.data);
+    // }
+
   }
 }

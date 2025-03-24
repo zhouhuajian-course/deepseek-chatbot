@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, Response
 import requests
 import json
 
@@ -42,6 +42,15 @@ def api_chat():
     robot_message = response.json()['choices'][0]['message']['content']
     return {"robot_message": robot_message}
 
+
+
+@app.route('/api/v2/chat')
+def api_v2_chat():
+    return "Hi, I am a robot!"
+    # def robot_message_generator():
+    #     for chunk in ["Hi, ", "I am a ", "robot!"]: 
+    #         yield chunk
+    # return Response(robot_message_generator())
 
 
 if __name__ == '__main__':
