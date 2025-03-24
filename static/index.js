@@ -8,8 +8,8 @@ window.onload = () => {
   sendBtn.onclick = () => {
     const userMessage = userMessageIpt.value
 
-    // userMessageIpt.value = ''
-    // sendBtn.disabled = true
+    userMessageIpt.value = ''
+    sendBtn.disabled = true
 
     // <div class="user-message">introduce yourself</div>
     const userMessageDiv = document.createElement('div')
@@ -27,32 +27,32 @@ window.onload = () => {
     // 请求体：{"user_message": "Hi"}
     // 响应体：{"robot_message": "Hello"}
 
-    fetch('/api/chat', {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ "user_message": userMessage })
-    })
-      .then(response => response.json())
-      .then(data => {
-        const robotMessagePre = document.createElement('pre')
-        robotMessagePre.className = 'robot-message'
-        robotMessagePre.textContent = data['robot_message']
-        chatContent.append(robotMessagePre)
-      })
+    // fetch('/api/chat', {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify({ "user_message": userMessage })
+    // })
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     const robotMessagePre = document.createElement('pre')
+    //     robotMessagePre.className = 'robot-message'
+    //     robotMessagePre.textContent = data['robot_message']
+    //     chatContent.append(robotMessagePre)
+    //   })
 
-    // const robotMessagePre = document.createElement('pre')
-    // robotMessagePre.className = 'robot-message'
+    const robotMessagePre = document.createElement('pre')
+    robotMessagePre.className = 'robot-message'
     // robotMessagePre.textContent = "I'm a robot!"
-    // chatContent.append(robotMessagePre)
-    // const eventSource = new EventSource('/api/v2/chat')
-    // eventSource.onmessage = (event) => {
-    //   console.log(event.data);
-    //   // if (event.data == '[DONE]') {
-    //   //   eventSource.close()
-    //   //   sendBtn.disabled = false
-    //   // } else {
-    //   //   robotMessagePre.textContent += JSON.parse(event.data)['chunk']
-    //   // }
-    // }
+    chatContent.append(robotMessagePre)
+    const eventSource = new EventSource('/api/v2/chat')
+    eventSource.onmessage = (event) => {
+      console.log(event.data);
+      if (event.data == '[DONE]') {
+        eventSource.close()
+        sendBtn.disabled = false
+      } else {
+        robotMessagePre.textContent += JSON.parse(event.data)['chunk']
+      }
+    }
   }
 }

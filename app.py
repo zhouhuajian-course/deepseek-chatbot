@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, Response
 import requests
 import json
 
@@ -44,18 +44,18 @@ def api_chat():
 
 
 
-# @app.route('/api/v2/chat')
-# def api_v2_chat():
-#     # import time
-#     def robot_message():
-#         for chunk in ["我", "是", "一个", "机器人"]: 
-#             yield chunk
-#             # yield "data: " + chunk + "\n\n"
-#             # yield "data: " + json.dumps({'chunk': chunk}) + "\n\n"
-#             # time.sleep(1)
-#         # yield "data: [DONE]\n\n"
+@app.route('/api/v2/chat')
+def api_v2_chat():
+    import time
+    def robot_message():
+        for chunk in ["I'm ", "a ", "robot"]: 
+            # yield chunk
+            # yield "data: " + chunk + "\n\n"
+            yield "data: " + json.dumps({'chunk': chunk}) + "\n\n"
+            time.sleep(1)
+        yield "data: [DONE]\n\n"
     
-#     return Response(robot_message(), content_type="text/event-stream")
+    return Response(robot_message(), content_type="text/event-stream")
 
 
 
