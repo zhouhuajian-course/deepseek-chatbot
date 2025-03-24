@@ -54,6 +54,8 @@ def api_v2_chat():
             yield "data: " + json.dumps({'chunk': chunk}) + "\n\n"
             time.sleep(1)
         yield "data: [DONE]\n\n"
+
+    # user_message = request.args.get('user_message')
     
     return Response(robot_message(), content_type="text/event-stream")
 

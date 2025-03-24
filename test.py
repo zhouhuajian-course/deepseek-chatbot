@@ -27,3 +27,15 @@ response = requests.request("POST", url, headers=headers, data=payload)
 print(response.status_code)
 print(response.text)
 robot_message = response.json()['choices'][0]['message']['content']
+
+
+
+# for line in response.iter_lines():
+#     # print(line)
+#     if line.startswith(b'data: '):
+#         if line[6:] != b'[DONE]':
+#             chunk = json.loads(line[6:])['choices'][0]['delta']['content']
+#             if chunk:
+#                 print(chunk)
+#         else:
+#             print('[DONE]') 
