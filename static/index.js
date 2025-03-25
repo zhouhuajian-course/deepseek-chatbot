@@ -45,7 +45,6 @@ window.onload = () => {
     // robotMessagePre.textContent = "I'm a robot!"
     chatContent.append(robotMessagePre)
     const eventSource = new EventSource('/api/v2/chat')
-    // const eventSource = new EventSource('/api/v2/chat?user_message=' + encodeURIComponent(userMessage))
     eventSource.onmessage = (event) => {
       console.log(event.data);
       if (event.data == '[DONE]') {
@@ -53,7 +52,6 @@ window.onload = () => {
         sendBtn.disabled = false
       } else {
         robotMessagePre.textContent += JSON.parse(event.data)['chunk']
-        // chatContent.scrollTop = chatContent.scrollHeight
       }
     }
   }
