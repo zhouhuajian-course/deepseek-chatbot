@@ -33,9 +33,10 @@ robot_message = response.json()['choices'][0]['message']['content']
 # for line in response.iter_lines():
 #     # print(line)
 #     if line.startswith(b'data: '):
-#         if line[6:] != b'[DONE]':
-#             chunk = json.loads(line[6:])['choices'][0]['delta']['content']
+#         data = line[6:]
+#         if data == b'[DONE]':
+#             print('[DONE]') 
+#         else:
+#             chunk = json.loads(data)['choices'][0]['delta']['content']    
 #             if chunk:
 #                 print(chunk)
-#         else:
-#             print('[DONE]') 
