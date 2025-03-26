@@ -1,28 +1,17 @@
 {
-  "id": "1cc38a26-c3d1-4d9f-a241-2e9e22c95760",
-  "object": "chat.completion",
-  "created": 1742532346,
+  "id": "2da1725d-8eec-4612-a8da-e76cd896052b",
+  "object": "chat.completion.chunk",
+  "created": 1742954476,
   "model": "deepseek-chat",
+  "system_fingerprint": "fp_3d5141a69a_prod0225",
   "choices": [
     {
       "index": 0,
-      "message": {
-        "role": "assistant",
-        "content": "Answer 1"
+      "delta": {
+        "content": "Hello"
       },
       "logprobs": null,
-      "finish_reason": "stop"
+      "finish_reason": null
     }
-  ],
-  "usage": {
-    "prompt_tokens": 9,
-    "completion_tokens": 33,
-    "total_tokens": 42,
-    "prompt_tokens_details": {
-      "cached_tokens": 0
-    },
-    "prompt_cache_hit_tokens": 0,
-    "prompt_cache_miss_tokens": 9
-  },
-  "system_fingerprint": "fp_3a5770e1b4_prod0225"
+  ]
 }

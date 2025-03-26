@@ -46,14 +46,51 @@ def api_chat():
 
 @app.route('/api/v2/chat')
 def api_v2_chat():
-    import time
+    user_message = request.args.get('user_message')
+        
+    url = "https://api.deepseek.com/chat/completions"
+
+    payload = json.dumps({
+      "messages": [
+        {
+          "content": user_message, 
+          "role": "user"    
+        }                   
+      ],
+      "model": "deepseek-chat",
+      "n": 1,
+      "stream": True
+    })
+    headers = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer sk-492ec2acc35c4d20b6ab2c9490fcef0d'
+    }
+
+    response = requests.request("POST", url, headers=headers, data=payload, stream=True)
+   
+    
+
+    # import time
     def robot_message():
-        for chunk in ["I'm ", "a ", "robot"]: 
-            # yield chunk
-            # yield "data: " + chunk + "\n\n"
-            yield "data: " + json.dumps({'chunk': chunk}) + "\n\n"
-            time.sleep(1)
-        yield "data: [DONE]\n\n"
+        for line in response.iter_lines():
+            if not line:
+                continue
+            if line == b'data: [DONE]':
+                print("DONE")
+                yield "data: [DONE]\n\n"
+            else:
+                chunk = json.loads(line[6:])['choices'][0]['delta']['content']    
+                if not chunk:
+                    continue
+                print(chunk)
+                yield "data: " + json.dumps({'chunk': chunk}) + "\n\n"
+        # for chunk in ["I'm ", "a ", "robot"]: 
+        #     # yield chunk
+        #     # yield "data: " + chunk + "\n\n"
+        #     yield "data: " + json.dumps({'chunk': chunk}) + "\n\n"
+        #     time.sleep(1)
+        # yield "data: [DONE]\n\n"
 
     return Response(robot_message(), content_type="text/event-stream")
 
